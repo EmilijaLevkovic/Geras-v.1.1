@@ -5,6 +5,10 @@
 #include "studentas.h"
 #include "skaiciavimai.h"
 
+/*!
+Programa skirta studentu galutinius balus suskaiciuoti, galimi ivedimai ranka arba is failo
+*/
+
 int main(){
     srand(time(NULL));
     int n=1,paz_sk,programos_tipas;
@@ -14,7 +18,6 @@ int main(){
     while(true){
       // cout<<"ar noresite duomenis skaityti is failo ar irasyti ranka? (failas/ranka) ";
       cout<<"1. duomenu irasymas ranka\n2. duomenu skaitymas is failo\n3. failo sukurimas\n";
-      // cin>>failas_ar_ranka;
       cin>>programos_tipas;
       cin.ignore(1000,'\n');
       if(programos_tipas==1||programos_tipas==2||programos_tipas==3)break;
@@ -43,7 +46,6 @@ int main(){
         cin.ignore(10000,'\n');
         if(pabaiga=='y'||pabaiga=='Y'){
           n++;
-          // grupe.resize(n);
           Irasymasranka(temp2,paz_sk);
           grupe.push_back(temp2);
         }
