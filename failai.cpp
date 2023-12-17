@@ -154,7 +154,6 @@ void tipas3(vector <Studentasc> &studentai){
     t_dal.reset();
     vector<Studentasc>::size_type j = 0;
     vector<Studentasc>::iterator it =find_if(studentai.begin(),studentai.end(),paz_skirst);
-
     cout<<"Studentu suriusiavimas i 2 dalis uztruko: "<<t_dal.elapsed()<<endl;
     t_dal.reset();
     out_failo_sukurimas3(studentai,"cringe",it);
