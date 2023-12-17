@@ -164,9 +164,6 @@ void tipas3(vector <Studentasc> &studentai){
 bool paz_skirst(Studentasc &temp){
   return((temp.getGal()==5.0));
 }
-bool partition(Studentasc &temp){
-  return(temp.getGal()<5);
-}
 
 void out_failo_sukurimas3(vector<Studentasc> &temp,string tipas,vector<Studentasc>::iterator it){
   string file;
