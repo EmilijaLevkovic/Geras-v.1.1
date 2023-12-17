@@ -1,8 +1,8 @@
 #include "studentas.h"
 #include<iostream>
 Studentasc::Studentasc(const Studentasc &other){
-  this->vardas=other.vardas;
-  this->pavarde=other.pavarde;
+  this->setVardas(other.getVardas());
+  this->setPavarde(other.getPavarde());
   this->egz=other.egz;
   this->gal_vid=other.gal_vid;
   this->galutinis2=other.galutinis2;
@@ -17,8 +17,8 @@ Studentasc& Studentasc::operator=(Studentasc &other){
     return *this;
   }
   else{
-    this->vardas=other.vardas;
-    this->pavarde=other.pavarde;
+    this->setVardas(other.getVardas());
+    this->setPavarde(other.getPavarde());
     this->egz=other.egz;
     this->gal_vid=other.gal_vid;
     this->galutinis2=other.galutinis2;
@@ -31,20 +31,17 @@ Studentasc& Studentasc::operator=(Studentasc &other){
 }
 
 Studentasc::Studentasc(Studentasc &&other){
-    vardas=other.vardas;
-    pavarde=other.pavarde;
+    setVardas(other.getVardas());
+    setPavarde(other.getPavarde());
     egz=other.egz;
     gal_vid=other.gal_vid;
     galutinis2=other.galutinis2;
     galutinis=other.galutinis;
     med=other.med;
-    cout<<"1"<<endl;
     if(other.paz.size()!=0)
     paz=std::move(other.paz);
     vid=other.vid;
-    cout<<"2\n";
     if(other.paz.size()!=0)paz=std::move(other.paz);
-    cout<<"3\n";
 }
 
 Studentasc& Studentasc::operator=(Studentasc &&other){
@@ -52,8 +49,8 @@ Studentasc& Studentasc::operator=(Studentasc &&other){
     return *this;
   }
   else{
-    this->vardas=other.vardas;
-    this->pavarde=other.pavarde;
+    this->setVardas(other.getVardas());
+    this->setPavarde(other.getPavarde());
     this->egz=other.egz;
     this->gal_vid=other.gal_vid;
     this->galutinis2=other.galutinis2;
@@ -118,7 +115,9 @@ void Studentasc::galutinio_skaiciavimai(string tipas){
 
 Studentasc::Studentasc(std::stringstream& str,int &l){
     int temp_paz=0;
-    str>>vardas>>pavarde;
+    string v,p;
+    str>>v>>p;
+    setVardas(v);setPavarde(p);
       for(int i=0;i<l;i++){
       paz.reserve(l);
       str>>temp_paz;
@@ -134,7 +133,8 @@ Studentasc::Studentasc(std::stringstream& str,int &l){
 
 std::stringstream Studentasc::output_string(){
     std::stringstream str;
-    str<<left<<setw(15)<<vardas<<setw(15)<<pavarde<<setw(16);
+    string v=getVardas(),pav=getPavarde();
+    str<<left<<setw(15)<<v<<setw(15)<<pav<<setw(16);
     str.precision(2);
     str<<std::fixed;
     str<<galutinis;
@@ -142,6 +142,6 @@ std::stringstream Studentasc::output_string(){
 }
 
 ostream &operator<<(std::ostream &out, const Studentasc &to_print){
-  out<<to_print.vardas<<" "<<to_print.pavarde<<" "<<to_print.galutinis<<endl;
+  out<<to_print.getVardas()<<" "<<to_print.getPavarde()<<" "<<to_print.galutinis<<endl;
   return out;
 }
