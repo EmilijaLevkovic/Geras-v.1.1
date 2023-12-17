@@ -1,7 +1,7 @@
 #ifndef STUDENTAS_H
 #define STUDENTAS_H
-
 #include "Mylib.h"
+using std::ostream;
 class Studentasc{
 private:
     string vardas, pavarde;
@@ -15,6 +15,9 @@ private:
 public:
     Studentasc():vardas(""),pavarde(""),egz(0),vid(0.0),med(0.0),galutinis(0.0),galutinis2(0.0),gal_vid(0.0){}
     Studentasc(std::stringstream& str,int &l);
+    Studentasc(const Studentasc &other);
+    Studentasc(Studentasc &&other);
+    
     // getteriai
     inline string getVardas() const {return vardas;}
     inline string getPavarde() const {return pavarde;}
@@ -32,7 +35,14 @@ public:
     double mediana();
     double vidurkis();
     void galutinio_skaiciavimai(string tipas);
+    Studentasc& operator=(Studentasc &other);
+    Studentasc& operator=(Studentasc &&other);
+    friend ostream &operator<<(ostream &out,const Studentasc &to_print);
     std::stringstream output_string();
+    // destruktorius
+    ~Studentasc(){
+        paz.clear();
+    }
     
 
 
