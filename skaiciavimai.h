@@ -1,6 +1,7 @@
 #ifndef SKAICIAVIMAI_H
 #define SKAICIAVIMAI_H
 #include "Mylib.h"
+#include "studentas.h"
 
 class Timer {
 private:
@@ -17,9 +18,12 @@ return durationDouble (hrClock::now() - start).count();
 }
 };
 
-void vidurkis(studentas &temp);
-void mediana(studentas &temp);
-void galutinis(studentas &temp,string tipas);
+
+
+bool palygintivardus(Studentasc& a, Studentasc& b);
+bool palygintigalutinius(Studentasc& a,Studentasc& b);
+bool palygintigalutiniusalt(Studentasc& a,Studentasc& b);
+#endif
 
 
 bool palygintivardus(studentas& a, studentas& b);
